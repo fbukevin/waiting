@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <% layout( 'layout' ) -%>
+ 
+    <h1><%= title %></h1>
+    <% waits.forEach( function (wait){ %>
+      <p>
+        <span>
+          <% if( wait._id == current ){ %>
+          <form action="/update/<%= wait._id %>" method="post" accept-charset="utf-8">
+            <input type="text" name="content" value="<%= wait.content %>" />
+          </form>
+          <% }else{ %>
+            <a href="/edit/<%= wait._id %>" title="Update this wait item"><%= wait.content %></a>
+          <% } %>
+        </code>
+        <span>
+          <a href="/destroy/<%= wait._id %>" title="Delete this wait item">Delete</a>
+        </code>
+      </p>
+    <% }); %>
+  </body>
+</html>

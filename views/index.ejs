@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% layout('layout') -%>
+    <h1><%= title %></h1>
+    <form action="/create" method="post" accept-charset="utf-8">
+	<input type="text" name="content" />
+    </form>
+    <h3>Press Enter/Return to insert.<br>Click (del) to remove.</h3>    
+    <% waits.forEach(function(wait){ %>
+      <p>
+	<span>
+	  <!-- ><a href="/edit/<%= wait._id %>" title="Update"><%= wait.content %></a> (the edit of this project is needless)-->
+	  <a href="<%= wait.content %>" target="_blank"><%= wait.content %></a>
+	</code>
+	<span>
+	  <a href="/destroy/<%= wait._id %>" title="Delete">(del)</a>
+	</code>
+      </p>
+    <% }); %>
+  </body>
+</html>
