@@ -48,7 +48,7 @@ exports.edit = function(req, res){
 
 /* Update item */
 exports.update = function(req, res){
-  wait.findById(req. params.id, function(err, wait){
+  wait.findById(req.params.id, function(err, wait){
    wait.content = req.body.content;
    wait.updated_at = Date.now();
    wait.save(function(err, wait, count){
@@ -58,5 +58,6 @@ exports.update = function(req, res){
 };
 
 exports.not_found = function(req, res){
- res.redirect('./404.html');
+  console.log("NOT " + req.params.content);
+  res.redirect('./404.html');
 };
