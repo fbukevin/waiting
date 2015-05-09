@@ -72,15 +72,10 @@ app.use(function(err, req, res, next) {
 });
 
 app.get('/', routes.index);
-
 app.post('/create', routes.create);
-
 app.get('/destroy/:id', routes.destroy);
-
 app.get('/edit/:id', routes.edit);
-
 app.post('/update/:id', routes.update);
-
 app.get('/:content', routes.not_found);
 
 http.createServer( app ).listen( 3301, function(){
