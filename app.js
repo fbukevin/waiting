@@ -13,11 +13,6 @@ var engine = require('ejs-locals');
 var http = require('http');
 //var methodOverride('method-override');
 
-require('nodetime').profile({
-    accountKey: 'a8fb0f7afdc960e4ec3635b5eb2ea1ade14c38f3', 
-    appName: 'waiting'
-  });
-
 var app = express();
 
 
