@@ -73,8 +73,5 @@ app.get('/edit/:id', routes.edit);
 app.post('/update/:id', routes.update);
 app.get('/:content', routes.not_found);
 
-http.createServer( app ).listen( 3301, function(){
-  console.log( 'Express server listening on port 3301');
-} );
 
 module.exports = app;

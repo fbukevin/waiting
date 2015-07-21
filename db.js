@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
-
+var uristring = 
+  process.env.MONGOLAB_URI || // if using mongolab
+  process.env_MONGOHQ_URI ||  // if using mongohq
+  'mongodb://localhost/express-wait'; 
 var wait = new schema({
 	user_id : String,
 	content : String,
@@ -8,4 +11,10 @@ var wait = new schema({
 });
 
 mongoose.model('wait', wait);
-mongoose.connect('mongodb://localhost/express-wait');
+mongoose.connect(uristring, function(err, res){
+  if(err) { 
+    console.log('ERROR connected to: ' + uristring);
+  } else {
+    console.log('Succeeded connected to: ' + uristring);
+  }
+});
