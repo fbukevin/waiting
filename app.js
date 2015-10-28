@@ -1,5 +1,5 @@
 
-// require('./db'); // db.js should be called before others being called so that other sevices can access to database
+require('./db'); // db.js should be called before others being called so that other sevices can access to database
 
 var express = require('express');
 var path = require('path');

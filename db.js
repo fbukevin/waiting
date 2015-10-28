@@ -1,22 +1,9 @@
-var mongoose = require('mongoose');
-var schema = mongoose.Schema;
-var uristring = 	// define uri for connect to database
-  process.env.MONGOLAB_URI || // if using mongolab
-  process.env_MONGOHQ_URI ||  // if using mongohq
-  // 'mongodb://localhost/express-wait'; 
-  'mongodb://heroku_z72ngjxb:heroku_z72ngjxb@ds053597.mongolab.com:53597/heroku_z72ngjxb';
-  
-var wait = new schema({		// define schema for wait table
-	user_id : String,
-	content : String,
-	update_at : Date
-});
+var mongojs = require('mongojs');
+var db = mongojs('mongodb://heroku_z72ngjxb:heroku_z72ngjxb@ds053597.mongolab.com:53597/heroku_z72ngjxb' //uri
+          , ["waits"]     // database
+          , {authMechanism: 'ScramSHA1'}  // for MongoLab auth
+          );
 
-mongoose.model('wait', wait);	// register model
-mongoose.connect(uristring, function(err, res){ // connect with uri
-  if(err) { 
-    console.log('ERROR connected to: ' + uristring);
-  } else {
-    console.log('Succeeded connected to: ' + uristring);
-  }
+db.waits.find(function(err, docs){
+  console.log(docs);  
 });
