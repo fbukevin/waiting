@@ -14,7 +14,6 @@ var wait = new schema({		// define schema for wait table
 
 mongoose.model('wait', wait);	// register model
 mongoose.connect(uristring, function(err, res){ // connect with uri
-  // console.log(err);
   if(err) { 
     console.log('ERROR connected to: ' + uristring);
   } else {
