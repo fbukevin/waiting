@@ -3,8 +3,8 @@ var schema = mongoose.Schema;
 var uristring = 	// define uri for connect to database
   process.env.MONGOLAB_URI || // if using mongolab
   process.env_MONGOHQ_URI ||  // if using mongohq
-  // 'mongodb://localhost/express-wait'; 
-  'mongodb://heroku_z72ngjxb:heroku_z72ngjxb@ds053597.mongolab.com:53597/heroku_z72ngjxb';
+  'mongodb://localhost/express-wait'; 
+  // 'mongodb://heroku_z72ngjxb:heroku_z72ngjxb@ds053597.mongolab.com:53597/heroku_z72ngjxb';
   
 var wait = new schema({		// define schema for wait table
 	user_id : String,
