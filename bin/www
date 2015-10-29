@@ -1,8 +1,14 @@
 #!/usr/bin/env node
 var debug = require('debug')('waiting');
 var app = require('../app');
-console.log('www');
-// app.set('port', process.env.PORT || 3000);
+// console.log('www'); // DEBUG
+
 var server = app.listen(3000, function() {	
   console.log('Express server listening on port ' + server.address().port);
 });
+
+/** 
+ *	不要這樣寫，這樣 heroku 還是會自己去配 port 導致不是 express 預設使用的 3000：
+ * 	app.set('port', process.env.PORT || 3000);
+ *	var server = app.listen(app.get('port'), function() { ... }
+ */
