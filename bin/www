@@ -3,8 +3,13 @@ var debug = require('debug')('waiting');
 var app = require('../app');
 // console.log('www'); // DEBUG
 
-// app.set('port', process.env.PORT || 5000); // 3000 is set for default
+// app.set('port', process.env.PORT || 5000); // 3000 is set for default, it's optional
 app.set('port', process.env.PORT);
 var server = app.listen(app.get('port'), function() {	
   console.log('Express server listening on port ' + server.address().port);
 });
+
+/** 
+ * Heroku 會自己 binding port，所以 app.listen 的地方不要指定 port
+ * 那樣會導致 app 所 bind 的 port 未必是該次 deploy 時 heroku 配給你的而無法 bind 成功
+ */
